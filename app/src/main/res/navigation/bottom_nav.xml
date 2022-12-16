@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_nav"
+    app:startDestination="@id/fragmentOne">
+
+    <fragment
+        android:id="@+id/fragmentOne"
+        android:name="com.example.navigation_controller.FragmentOne"
+        tools:layout="@layout/fragment_one" >
+
+        <action
+            android:id="@+id/action_fragmentOne_to_fragmentTwo"
+            app:destination="@id/fragmentTwo" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentTwo"
+        android:name="com.example.navigation_controller.FragmentTwo"
+        tools:layout="@layout/fragment_two" >
+
+        <deepLink app:uri="https://www.deeplinkexample.com"
+            app:action="android.intent.action.MY_ACTION"
+            app:mimeType="type/subtype"/>
+        <argument
+            android:name="id"
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_fragmentTwo_to_fragmentThree"
+            app:destination="@id/fragmentThree"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentThree"
+        android:name="com.example.navigation_controller.FragmentThree"
+        tools:layout="@layout/fragment_three" >
+        <action
+            android:id="@+id/action_fragmentThree_to_fragmentOne"
+            app:destination="@id/fragmentOne"/>
+    </fragment>
+</navigation>
